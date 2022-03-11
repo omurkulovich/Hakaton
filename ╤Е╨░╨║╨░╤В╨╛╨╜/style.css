@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fafafa;
+}
+.nav {
+  position: absolute;
+  width: 100%;
+  height: 54px;
+  top: 0;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dbdbdb;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.wrapper {
+  position: relative;
+  width: 975px;
+  height: 54px;
+  top: 0;
+  background-color: #ffffff;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px 0px 18px;
+  z-index: 1;
+}
+.icons {
+  width: 300px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.logo,
+.home,
+.explore,
+.create,
+.compass,
+.heart,
+.profile-img {
+  cursor: pointer;
+}
+/* drop-down */
+.drop-down {
+  position: absolute;
+  top: 53px;
+  width: 201px;
+  height: 200px;
+  box-shadow: 0 0 5px 1px rgb(0 0 0 / 10%);
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  z-index: 1;
+  right: 1%;
+  visibility: hidden;
+}
+.drop-down ul {
+  display: flex;
+  flex-direction: column;
+}
+.drop-down ul li {
+  padding: 8px 16px;
+  list-style: none;
+}
+.drop-down ul li:hover {
+  background-color: #fafafa;
+}
+.drop-down ul li a {
+  text-decoration: none;
+
+  color: #2b2b2b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.card {
+  margin-top: 60px;
+  position: relative;
+  width: 600px;
+  min-height: 400px;
+  background-color: #fff;
+  box-shadow: 15px 15px 60px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.userDetails {
+  display: flex;
+  align-items: center;
+}
+.profile_img {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 8px;
+}
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card .top .userDetails h3 {
+  font-size: 16px;
+  color: #4d4d4f;
+  font-weight: 500;
+  line-height: 1em;
+}
+.card .top .userDetails h3 span {
+  font-size: 0.75em;
+}
+.dot {
+  transform: scale(0.6);
+  cursor: pointer;
+}
+.imgBx {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  margin: 10px 0 15px;
+}
+.actionBtns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.actionBtns img {
+  max-width: 24px;
+  cursor: pointer;
+}
+.actionBtns .left img {
+  margin-right: 8px;
+}
+.likes {
+  font-weight: 500;
+  margin-top: 5px;
+  font-size: 16px;
+  color: #4d4d4f;
+}
+.message {
+  font-weight: 400;
+  margin-top: 5px;
+  color: #777;
+  line-height: 1.5em;
+}
+.message b {
+  color: #262626;
+}
+.message span {
+  color: #1d92ff;
+  cursor: pointer;
+}
+.comments {
+  margin-top: 10px;
+  font-weight: 400;
+  color: #999;
+}
+.addComments {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.addComments .userImg {
+  position: relative;
+  min-width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 8px;
+}
+.text {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-weight: 400;
+  font-size: 16px;
+  color: #262626;
+}
+.text::placeholder {
+  color: #777;
+}
+.postTime {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #777;
+}

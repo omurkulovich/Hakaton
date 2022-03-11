@@ -1,0 +1,110 @@
+let API = "http://localhost:8000/post";
+let create = $(".create");
+let addInpImage = $("#add-inp-image");
+let addInpDiscription = $("#add-inp-discription");
+let btnAdd = $("#btn-add1");
+let newPost = $(".new-post");
+
+// 11111 navbar start
+let togglestatus = true;
+document.addEventListener("DOMContentLoaded", (event) => {
+  console.log("hi");
+  const p = document.querySelector(".profile-img");
+  p.addEventListener("click", () => {
+    if (togglestatus === false) {
+      document.querySelector(".drop-down").style.visibility = "hidden";
+      document
+        .querySelector("#home1")
+        .setAttribute(
+          "d",
+          "M45.5 48H30.1c-.8 0-1.5-.7-1.5-1.5V34.2c0-2.6-2.1-4.6-4.6-4.6s-4.6 2.1-4.6 4.6v12.3c0 .8-.7 1.5-1.5 1.5H2.5c-.8 0-1.5-.7-1.5-1.5V23c0-.4.2-.8.4-1.1L22.9.4c.6-.6 1.6-.6 2.1 0l21.5 21.5c.3.3.4.7.4 1.1v23.5c.1.8-.6 1.5-1.4 1.5z"
+        );
+
+      togglestatus = true;
+    } else if (togglestatus === true) {
+      document.querySelector(".drop-down").style.visibility = "visible";
+      document
+        .querySelector("#home1")
+        .setAttribute(
+          "d",
+          "M45.3 48H30c-.8 0-1.5-.7-1.5-1.5V34.2c0-2.6-2-4.6-4.6-4.6s-4.6 2-4.6 4.6v12.3c0 .8-.7 1.5-1.5 1.5H2.5c-.8 0-1.5-.7-1.5-1.5V23c0-.4.2-.8.4-1.1L22.9.4c.6-.6 1.5-.6 2.1 0l21.5 21.5c.4.4.6 1.1.3 1.6 0 .1-.1.1-.1.2v22.8c.1.8-.6 1.5-1.4 1.5zm-13.8-3h12.3V23.4L24 3.6l-20 20V45h12.3V34.2c0-4.3 3.3-7.6 7.6-7.6s7.6 3.3 7.6 7.6V45z"
+        );
+      togglestatus = false;
+    }
+  });
+});
+// 111
+
+create.on("click", function () {});
+
+btnAdd.on("click", function () {
+  let newPost = {
+    image: addInpImage.val(),
+    discription: addInpDiscription.val(),
+  };
+  fetch(API, {
+    method: "POST",
+    body: JSON.stringify(newPost),
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+  }).then((response) => render());
+});
+
+async function render() {
+  newPost.empty();
+  let data = await fetch(API)
+    .then((res) => res.json())
+    .then((data) => {
+      data.forEach((car) => {
+        newPost.append(`
+        <div class="card">
+        <div class="top">
+            <div class="userDetails">
+                <div class="profile_img">
+                    <img src="./images/user.jpg" alt="" class="cover">
+                </div>
+                <h3>aktan_absamat<br><span>Bishkek, Kyrgyzstan</span></h3>
+            </div>
+                <div>
+                    <img src="./images/dot.png" alt="" class="dot">
+                </div>
+            </div>
+                <div class="imgBx">
+                    <img src="${car.image}" alt="" class="cover">
+        </div>
+        <div class="actionBtns">
+            <div class="left">
+                <img src="./images/heart.png" alt="" class="heart">
+                <img src="./images/comment.png" alt="">
+                <img src="./images/share.png" alt="">
+            </div>
+            <div class="right">
+                <img src="./images/bookmark.png" alt="">
+            </div>
+        </div>
+        <h4 class="likes">3,648 likes</h4>
+        <h4 class="message">aktan_absamat    ${car.discription}</h4>
+        <h4 class="comments">View all 245 comments</h4>
+        <div class="addComments">
+            <div class="userImg">
+                <img src="./images/user.jpg" alt="" class="cover">
+            </div>
+            <input type="text" class="text" placeholder="Add a comment...">
+        </div>
+        <h5 class="postTime">5 hours ago</h5>
+    </div>
+`);
+      });
+    });
+}
+del.on("click", async function (e) {
+  let id = e.target.parentNode.parentNode.parentNode.id;
+  await fetch(`${API}/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json; charset=utf-8",
+    },
+  });
+  render();
+});
